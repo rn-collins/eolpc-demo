@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/chat.js": { "maxDuration": 30 },
+    "api/beacon.js": { "maxDuration": 10 },
+    "api/queries.js": { "maxDuration": 10 }
+  }
+}

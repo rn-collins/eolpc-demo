@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EOLPC Knowledge System — Technology Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dg:#1A3A1A;--mg:#2E6B2E;--warm:#F6F3EC;--acc:#B8842A;
+  --border:#D4CABC;--text:#1C1B1F;--muted:#6B6459;
+  --cite-bg:#EDF3ED;--warn:#8B3A2E;--warn-bg:#FDF0EC;
+}
+html{scroll-behavior:smooth}
+body{background:var(--warm);font-family:'Cormorant Garamond',Georgia,serif;color:var(--text);line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--dg);padding:14px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid #2E5A2E}
+.nav-logo{width:32px;height:32px;background:var(--warm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--dg);flex-shrink:0}
+.nav-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(246,243,236,.9);letter-spacing:.08em;text-transform:uppercase}
+.nav-sub{font-size:12px;color:rgba(246,243,236,.5);font-style:italic;margin-top:1px}
+.nav-badge{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.5);border:1px solid rgba(246,243,236,.15);border-radius:12px;padding:3px 10px;letter-spacing:.04em}
+
+/* HERO */
+.hero{max-width:760px;margin:0 auto;padding:56px 24px 32px}
+.hero-kicker{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+.hero-headline{font-size:clamp(28px,4vw,42px);font-weight:300;line-height:1.25;color:var(--dg);margin-bottom:20px}
+.hero-headline em{font-style:italic}
+.hero-body{font-size:18px;line-height:1.75;color:var(--muted);max-width:600px}
+.hero-body strong{color:var(--text);font-weight:600}
+hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
+
+/* DEMO SECTION */
+.demo-wrap{background:white;border-top:3px solid var(--dg);border-bottom:1px solid var(--border)}
+.demo-inner{max-width:860px;margin:0 auto;padding:48px 24px}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.demo-intro{font-size:17px;color:var(--muted);margin-bottom:28px;max-width:600px}
+
+/* CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{background:var(--warm);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:14px;color:var(--dg);cursor:pointer;transition:all .15s}
+.chip:hover{background:var(--cite-bg);border-color:var(--mg)}
+
+/* QUERY BOX */
+.qbox{background:white;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:8px;transition:border-color .2s;box-shadow:0 2px 8px rgba(26,58,26,.05)}
+.qbox:focus-within{border-color:var(--mg)}
+.qtextarea{width:100%;padding:14px 18px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text);border:none;outline:none;resize:none;min-height:72px;line-height:1.5}
+.qtextarea::placeholder{color:rgba(28,27,31,.3)}
+.qfooter{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-top:1px solid #F0EAE2;background:rgba(246,243,236,.5)}
+.qnote{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.02em}
+.qbtn{background:var(--dg);color:var(--warm);border:none;border-radius:7px;padding:8px 20px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .15s}
+.qbtn:hover:not(:disabled){background:#2A5A2A}
+.qbtn:disabled{opacity:.45;cursor:not-allowed}
+
+/* RESPONSE */
+.resp-area{display:none;background:white;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(26,58,26,.06);animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.resp-area.vis{display:block}
+.resp-head{background:var(--dg);padding:13px 18px;display:flex;align-items:center;gap:12px}
+.avatar{width:34px;height:34px;background:linear-gradient(135deg,#3A6B3A,#1A3A1A);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--warm);font-weight:600;flex-shrink:0;position:relative}
+.avatar::after{content:'';position:absolute;bottom:0;right:0;width:9px;height:9px;background:#4CAF50;border-radius:50%;border:2px solid var(--dg)}
+.avatar.loading::after{background:var(--acc);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.rname{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--warm);font-weight:600}
+.rrole{font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.5);letter-spacing:.04em;margin-top:1px}
+.dots{display:none;align-items:center;gap:5px;padding:18px 20px}
+.dots.vis{display:flex}
+.dot{width:6px;height:6px;background:var(--mg);border-radius:50%;animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
+.dtext{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--muted);font-style:italic;margin-left:4px}
+.resp-content{display:none}
+.resp-content.vis{display:block}
+.resp-body{padding:20px 22px 14px}
+.type-tag{display:inline-flex;align-items:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:12px}
+.tag-a{background:var(--cite-bg);color:var(--mg);border:1px solid #B8D4B8}
+.tag-b{background:#EDF0F8;color:#3A4A8A;border:1px solid #B8C4E0}
+.tag-c{background:var(--warn-bg);color:var(--warn);border:1px solid #E8C0B8}
+.resp-text{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.75;color:var(--text)}
+.resp-text p{margin-bottom:11px}.resp-text p:last-child{margin-bottom:0}
+.cite-num{display:inline-block;font-size:9px;background:var(--cite-bg);color:var(--mg);padding:1px 4px;border-radius:3px;vertical-align:super;font-weight:500;margin:0 1px;font-family:'DM Mono',monospace}
+.declined-box{background:var(--warn-bg);border:1px solid #E8C0B8;border-radius:8px;padding:14px 16px}
+.declined-box p{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7}
+.dir-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;background:var(--dg);color:var(--warm);padding:7px 14px;border-radius:6px;font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s}
+.dir-link:hover{background:#2A5A2A}
+.cites{border-top:1px solid #F0EAE2;padding:14px 22px;background:rgba(237,243,237,.35)}
+.cites-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.cite{display:flex;gap:9px;margin-bottom:6px;padding:7px 9px;background:white;border-radius:5px;border:1px solid #D8EAD8}
+.cref{font-family:'DM Mono',monospace;font-size:10px;color:var(--mg);font-weight:500;flex-shrink:0;margin-top:1px}
+.ctxt{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);line-height:1.4}
+.ctxt strong{color:var(--text);font-weight:600}
+.resp-foot{border-top:1px solid #F0EAE2;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;background:rgba(246,243,236,.6)}
+.rfoot-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.03em}
+.err{display:none;padding:16px 22px;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warn);font-style:italic}
+.err.vis{display:block}
+
+/* ARCHITECTURE SECTION */
+.arch-section{max-width:860px;margin:0 auto;padding:60px 24px}
+.arch-section h2{font-size:28px;font-weight:300;color:var(--dg);margin-bottom:8px}
+.arch-desc{font-size:17px;color:var(--muted);margin-bottom:32px;max-width:580px;line-height:1.7}
+.arch-svg-wrap{background:white;border:1px solid var(--border);border-radius:10px;padding:24px;overflow-x:auto}
+
+/* SCOPE SECTION */
+.scope-section{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 24px}
+.scope-inner{max-width:860px;margin:0 auto}
+.scope-inner h2{font-size:28px;font-weight:300;color:var(--dg);margin-bottom:8px}
+.scope-desc{font-size:17px;color:var(--muted);margin-bottom:32px;max-width:580px;line-height:1.7}
+.screens-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.screens-grid{grid-template-columns:1fr}}
+.screen-card{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.sc-header{background:var(--dg);padding:10px 14px;display:flex;align-items:center;gap:8px}
+.sc-dot{width:6px;height:6px;border-radius:50%;background:rgba(246,243,236,.4)}
+.sc-name{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(246,243,236,.7);margin-left:4px}
+.sc-body{padding:16px;background:white;min-height:140px}
+.sc-field{background:var(--warm);border:1px solid var(--border);border-radius:5px;padding:7px 10px;font-size:12px;color:var(--muted);margin-bottom:6px}
+.sc-btn{background:var(--dg);color:var(--warm);border-radius:5px;padding:7px 12px;font-size:11px;font-family:'Syne',sans-serif;font-weight:600;display:inline-block;margin-bottom:4px}
+.sc-tag{display:inline-flex;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:3px;margin-bottom:8px}
+.sc-resp{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.sc-cite-item{font-size:11px;color:var(--mg);background:var(--cite-bg);border-radius:4px;padding:4px 8px;margin-bottom:3px}
+.sc-stat{background:var(--warm);border-radius:5px;padding:8px 10px;margin-bottom:5px}
+.sc-num{font-size:18px;font-weight:600;color:var(--dg)}
+.sc-slbl{font-size:11px;color:var(--muted)}
+.sc-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.sc-bar-bg{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.sc-bar{height:3px;background:var(--mg);border-radius:2px}
+.sc-blbl{font-size:10px;color:var(--muted);min-width:80px}
+
+/* BUILDER SECTION */
+.builder-section{max-width:860px;margin:0 auto;padding:60px 24px}
+.builder-section h2{font-size:28px;font-weight:300;color:var(--dg);margin-bottom:32px}
+.builder-card{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.builder-avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--mg),var(--dg));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--warm);font-weight:600;font-family:'Cormorant Garamond',serif;flex-shrink:0}
+.builder-name{font-size:22px;font-weight:600;color:var(--dg);margin-bottom:4px}
+.builder-title{font-size:14px;color:var(--muted);margin-bottom:16px;font-family:'Syne',sans-serif;letter-spacing:.04em}
+.builder-bio{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:16px}
+.cred-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cred-chip{font-family:'DM Mono',monospace;font-size:11px;color:var(--dg);background:var(--cite-bg);border:1px solid #B8D4B8;border-radius:4px;padding:3px 9px}
+
+/* CTA */
+.cta-section{background:var(--dg);padding:72px 24px}
+.cta-inner{max-width:600px;margin:0 auto;text-align:center}
+.cta-inner h2{font-size:32px;font-weight:300;color:var(--warm);margin-bottom:16px;line-height:1.3}
+.cta-inner p{font-size:17px;color:rgba(246,243,236,.7);margin-bottom:32px;line-height:1.7}
+.cta-btn{display:inline-block;background:var(--warm);color:var(--dg);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border-radius:8px;text-decoration:none;transition:all .15s}
+.cta-btn:hover{background:#EDE8E0}
+
+/* FOOTER */
+footer{background:#0F2410;padding:24px;text-align:center}
+footer p{font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.35);letter-spacing:.04em;line-height:1.8}
+footer a{color:rgba(246,243,236,.5);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">E</div>
+  <div>
+    <div class="nav-title">EOLPC Knowledge System</div>
+    <div class="nav-sub">Technology preview for RiverStyx Foundation</div>
+  </div>
+  <div class="nav-badge">Prototype · June 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">End of Life Psychedelic Care</div>
+  <h1 class="hero-headline">The research you helped build,<br><em>accessible to every practitioner</em><br>at every hour.</h1>
+  <p class="hero-body">
+    This is a working prototype of the <strong>EOLPC Knowledge Intelligence System</strong>. Type any query and watch it retrieve real primary sources — live from PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa. Every result is an actual paper, a registered trial, or a sourced web document. Nothing is simulated.
+  </p>
+</section>
+
+<hr class="section-rule">
+
+<!-- DEMO -->
+<section class="demo-wrap">
+  <div class="demo-inner">
+    <div class="section-label">Live prototype</div>
+    <p class="demo-intro">Try one of the queries below — or type your own. Each query hits PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa simultaneously. Results are real primary sources retrieved live. Patient-specific medical advice queries are declined and routed to the EOLPC Connector Directory.</p>
+
+    <div class="chips">
+      <div class="chip" onclick="setQ(this.textContent)">What do the Hopkins and NYU psilocybin trials show about EOL anxiety and depression?</div>
+      <div class="chip" onclick="setQ(this.textContent)">How does ketamine compare to psilocybin for end-of-life psychedelic care?</div>
+      <div class="chip" onclick="setQ(this.textContent)">What does the EOLPC practitioner survey show about facilitating EOL psychedelic sessions?</div>
+      <div class="chip" onclick="setQ(this.textContent)">What is the current legal status of psilocybin for end-of-life care in Oregon?</div>
+    </div>
+
+    <div class="qbox">
+      <textarea class="qtextarea" id="qi" placeholder="Ask a clinical, legal, or educational question about psychedelic-assisted end-of-life care…" rows="3"></textarea>
+      <div class="qfooter">
+        <div class="qnote">Responses cite primary sources · Patient-specific medical advice is declined</div>
+        <button class="qbtn" id="qbtn" onclick="ask()">Ask →</button>
+      </div>
+    </div>
+
+    <div class="resp-area" id="ra">
+      <div class="resp-head">
+        <div class="avatar" id="av">CC</div>
+        <div>
+          <div class="rname">Christine Caldwell</div>
+          <div class="rrole">Founder & ED · End of Life Psychedelic Care</div>
+        </div>
+      </div>
+      <div class="dots" id="dots">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dtext">Retrieving from EOLPC knowledge base…</div>
+      </div>
+      <div class="err" id="err">Unable to reach the knowledge system. Please try again.</div>
+      <div class="resp-content" id="rc">
+        <div class="resp-body">
+          <div id="rtag"></div>
+          <div class="resp-text" id="rtext"></div>
+          <div id="rdeclined" style="display:none" class="declined-box"></div>
+        </div>
+        <div class="cites" id="rcites" style="display:none">
+          <div class="cites-lbl">Sources</div>
+          <div id="rclist"></div>
+        </div>
+        <div class="resp-foot">
+          <div class="rfoot-txt">EOLPC Knowledge System · Closed access · All responses cite primary sources</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(107,100,89,.45);letter-spacing:.04em">Aloha AI Consulting · Prototype</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ARCHITECTURE -->
+<section class="arch-section">
+  <div class="section-label">How it works</div>
+  <h2>5-layer RAG architecture</h2>
+  <p class="arch-desc">Every response retrieves from five verified data layers, attaches a primary source citation, and routes through a disclaimer classifier before reaching the user. The diagram below shows the <strong>full production system design</strong>. This prototype demonstrates the retrieval layer using PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa — in place of the full vector embedding pipeline shown.</p>
+  <div class="arch-svg-wrap">
+    <svg width="100%" viewBox="0 0 680 465" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>EOLPC Knowledge Intelligence System — RAG Architecture</title>
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#6B6459" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+        <style>
+          .a-th{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;fill:#1C1B1F}
+          .a-ts{font-family:'Syne',sans-serif;font-size:11px;font-weight:400;fill:#6B6459}
+          .a-mono{font-family:'DM Mono',monospace;font-size:10px;fill:#6B6459}
+        </style>
+      </defs>
+      <text class="a-mono" x="22" y="21">EOLPC Knowledge Intelligence System · Closed RAG Architecture · Aloha AI Consulting · June 2026</text>
+      <rect x="12" y="28" width="656" height="432" rx="6" fill="none" stroke="#D4CABC" stroke-width="0.5" stroke-dasharray="6 4"/>
+      <!-- Access -->
+      <rect x="32" y="46" width="616" height="52" rx="4" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+      <text class="a-th" x="340" y="68" text-anchor="middle" dominant-baseline="central">Credentialed access only</text>
+      <text class="a-ts" x="340" y="86" text-anchor="middle" dominant-baseline="central">Authentication · RBAC · practitioner + institutional staff tiers · Supabase</text>
+      <!-- Arrow 1 -->
+      <line x1="340" y1="98" x2="340" y2="113" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
+      <!-- KB -->
+      <rect x="32" y="116" width="616" height="116" rx="4" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5"/>
+      <text class="a-th" x="340" y="134" text-anchor="middle" dominant-baseline="central">5-layer knowledge base</text>
+      <text class="a-ts" x="46" y="152">Layer 1 · 36 in-depth clinical interviews (Unlimited Sciences deathwork dataset)</text>
+      <text class="a-ts" x="46" y="170">Layer 2 · Practitioner survey N=163 (EOLPC deathwork study)</text>
+      <text class="a-ts" x="46" y="188">Layer 3 · EOLPC course curriculum + facilitator guides + training materials</text>
+      <text class="a-ts" x="46" y="206">Layer 4 · EOL legal framework + regulatory documents (Tucker JD, Antithesis Law)</text>
+      <text class="a-ts" x="46" y="224">Layer 5 · Published research database · 20+ key studies (Hopkins, NYU, MAPS, KRF)</text>
+      <!-- Arrow 2 -->
+      <line x1="340" y1="232" x2="340" y2="247" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
+      <!-- RAG Pipeline -->
+      <rect x="32" y="250" width="616" height="106" rx="4" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+      <text class="a-th" x="340" y="268" text-anchor="middle" dominant-baseline="central">RAG processing pipeline</text>
+      <text class="a-ts" x="46" y="286">1. Query → PubMed + Semantic Scholar + Europe PMC + ClinicalTrials.gov + Exa (parallel)</text>
+      <text class="a-ts" x="46" y="304">2. Results merged and filtered by relevance to EOL psychedelic care</text>
+      <text class="a-ts" x="46" y="322">3. Disclaimer check: patient-specific queries declined, all others surface sources</text>
+      <text class="a-ts" x="46" y="340">4. Response: source summary + full abstract collapsed + direct links to primary sources</text>
+      <!-- Arrow 3 split -->
+      <line x1="340" y1="356" x2="340" y2="368" stroke="#6B6459" stroke-width="0.5"/>
+      <line x1="179" y1="368" x2="490" y2="368" stroke="#6B6459" stroke-width="0.5"/>
+      <line x1="179" y1="368" x2="179" y2="376" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
+      <line x1="490" y1="368" x2="490" y2="376" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
+      <!-- Output A/B -->
+      <rect x="32" y="376" width="294" height="52" rx="4" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+      <text class="a-th" x="179" y="395" text-anchor="middle" dominant-baseline="central">Types A + B: Verified response</text>
+      <text class="a-ts" x="179" y="413" text-anchor="middle" dominant-baseline="central">Primary source citations · legal disclaimer</text>
+      <!-- Output C -->
+      <rect x="340" y="376" width="300" height="52" rx="4" fill="#FAEEDA" stroke="#FAC775" stroke-width="0.5"/>
+      <text class="a-th" x="490" y="395" text-anchor="middle" dominant-baseline="central">Type C: Connector Directory referral</text>
+      <text class="a-ts" x="490" y="413" text-anchor="middle" dominant-baseline="central">Out-of-scope queries · practitioner match via eolpc.org</text>
+    </svg>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- SCOPE (4 SCREENS) -->
+<section class="scope-section">
+  <div class="scope-inner">
+    <div class="section-label">Full system scope</div>
+    <h2>Four screens, one credentialed product</h2>
+    <p class="scope-desc">From practitioner login through institutional admin, the complete system architecture fits in a single credentialed access layer.</p>
+    <div class="screens-grid">
+
+      <!-- Screen 1: Login -->
+      <div class="screen-card">
+        <div class="sc-header">
+          <div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot"></div>
+          <div class="sc-name">1 · Login + credentialing</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-field" style="font-size:11px;color:#888;margin-bottom:10px">EOLPC Knowledge System — Practitioner Access</div>
+          <div class="sc-field">practitioner@hospital.org</div>
+          <div class="sc-field">EOLPC-2024-XXXX</div>
+          <div class="sc-btn">Sign in →</div>
+          <div style="font-size:10px;color:#AAA;margin-top:8px;line-height:1.5">Available to verified healthcare professionals and EOLPC course graduates</div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Query -->
+      <div class="screen-card">
+        <div class="sc-header">
+          <div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot"></div>
+          <div class="sc-name">2 · Query interface</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-field" style="min-height:36px;font-size:11px;color:#AAA">Ask about psychedelic-assisted EOL care…</div>
+          <div style="font-size:10px;color:#AAA;margin-bottom:8px">Recent queries</div>
+          <div style="font-size:11px;color:#6B6459;background:#F6F3EC;border-radius:4px;padding:5px 8px;margin-bottom:4px">What does the Ross 2016 NYU study show?</div>
+          <div style="font-size:11px;color:#6B6459;background:#F6F3EC;border-radius:4px;padding:5px 8px;margin-bottom:4px">Ketamine protocols for home-based EOL care</div>
+          <div style="font-size:11px;color:#C28A3A;background:#FDF0EC;border-radius:4px;padding:5px 8px">↗ Routed to Connector Directory (patient-specific)</div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Response -->
+      <div class="screen-card">
+        <div class="sc-header">
+          <div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot"></div>
+          <div class="sc-name">3 · Response + citations</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag tag-a" style="background:#EDF3ED;color:#2E6B2E;font-size:9px">Published Clinical Research</div>
+          <div class="sc-resp">Ross et al. 2016 found an 83% antidepressant response rate at 6-week follow-up in N=29 cancer patients… <span style="color:#2E6B2E;font-size:10px">[1]</span> Sustained at 4.5-year follow-up (Agin-Liebes 2020). <span style="color:#2E6B2E;font-size:10px">[2]</span></div>
+          <div class="sc-cite-item">[1] Ross et al. 2016 · J. Psychopharmacology · PMID 27685429</div>
+          <div class="sc-cite-item">[2] Agin-Liebes et al. 2020 · J. Psychopharmacology</div>
+        </div>
+      </div>
+
+      <!-- Screen 4: Admin -->
+      <div class="screen-card">
+        <div class="sc-header">
+          <div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot"></div>
+          <div class="sc-name">4 · Institutional admin</div>
+        </div>
+        <div class="sc-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px">
+            <div class="sc-stat"><div class="sc-num">247</div><div class="sc-slbl">Queries / mo</div></div>
+            <div class="sc-stat"><div class="sc-num">18</div><div class="sc-slbl">Active users</div></div>
+            <div class="sc-stat"><div class="sc-num">94%</div><div class="sc-slbl">Verified (A/B)</div></div>
+          </div>
+          <div style="font-size:10px;color:#AAA;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Knowledge base health</div>
+          <div class="sc-bar-row"><div class="sc-blbl">Layer 1 · Interviews</div><div class="sc-bar-bg"><div class="sc-bar" style="width:100%"></div></div><div style="font-size:10px;color:#AAA">36</div></div>
+          <div class="sc-bar-row"><div class="sc-blbl">Layer 2 · Survey</div><div class="sc-bar-bg"><div class="sc-bar" style="width:100%"></div></div><div style="font-size:10px;color:#AAA">163</div></div>
+          <div class="sc-bar-row"><div class="sc-blbl">Layer 5 · Research</div><div class="sc-bar-bg"><div class="sc-bar" style="width:90%"></div></div><div style="font-size:10px;color:#AAA">23</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- BUILDER -->
+<section class="builder-section">
+  <div class="section-label">Technology partner</div>
+  <h2>About the builder</h2>
+  <div class="builder-card">
+    <div class="builder-avatar">RN</div>
+    <div>
+      <div class="builder-name">RN Collins</div>
+      <div class="builder-title">Aloha AI Consulting · Honolulu, HI</div>
+      <p class="builder-bio">
+        MS in Anatomy & Neurobiology (Boston University, 2024). JD candidate, Northeastern University School of Law (2029). Active law clerk at Antithesis Law — EOLPC's own legal counsel — where she has direct exposure to the psychedelics legal framework this system is built on. AI Workflow Developer at Croke Fairchild Duarte & Beres deploying the Harvey platform across legal operations.
+      </p>
+      <p class="builder-bio">
+        She is not an outside vendor. The person building this system is already inside the legal, clinical, and AI contexts it operates in — simultaneously. That combination does not exist anywhere else.
+      </p>
+      <div class="cred-chips">
+        <div class="cred-chip">MS Anatomy & Neurobiology · BU</div>
+        <div class="cred-chip">JD Candidate · Northeastern</div>
+        <div class="cred-chip">Law Clerk · Antithesis Law</div>
+        <div class="cred-chip">AI Dev · Croke Fairchild</div>
+        <div class="cred-chip">Brown AISLE · AI Governance</div>
+        <div class="cred-chip">collins.ra@northeastern.edu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>The system works.<br>The build takes six months.<br>The ask is 30 minutes.</h2>
+    <p>Christine Caldwell and RN Collins are available for a brief conversation about the build plan, the technology approach, and which funding structure fits RiverStyx's current giving philosophy.</p>
+    <button id="ctaBtn" class="cta-btn" onclick="contactChristine()" style="margin-bottom:16px;cursor:pointer;border:none">
+      Request 30 minutes with Christine →
+    </button>
+    <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(246,243,236,.45);letter-spacing:.04em;margin-top:4px">
+      christine@eolpc.org
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    End of Life Psychedelic Care · <a href="https://eolpc.org">eolpc.org</a> · christine@eolpc.org<br>
+    Technology partner: Aloha AI Consulting · collins.ra@northeastern.edu<br>
+    This is a prototype demonstration of the EOLPC Knowledge Intelligence System, June 2026.<br>
+    Not a clinical tool. Responses are for demonstration purposes only.
+  </p>
+</footer>
+
+<script>
+// Generate visitor ID for this session
+function contactChristine() {
+  const email = 'christine@eolpc.org';
+  const subject = encodeURIComponent('EOLPC Knowledge System — 30 minutes');
+  const btn = document.getElementById('ctaBtn');
+
+  // Try to open mail client
+  window.location.href = `mailto:${email}?subject=${subject}`;
+
+  // Copy email to clipboard as fallback (works silently)
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(email).catch(() => {});
+  }
+
+  // Show feedback in the button
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✓ Email address copied · christine@eolpc.org';
+  btn.style.background = '#2A5A2A';
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.style.background = '';
+  }, 5000);
+}
+
+const VID = sessionStorage.getItem('eolpc_vid') || (() => {
+  const id = Math.random().toString(36).slice(2);
+  sessionStorage.setItem('eolpc_vid', id);
+  return id;
+})();
+
+// Fire visit beacon (logs to Upstash + Slack if configured)
+fetch('/api/beacon', {
+  method: 'POST',
+  headers: {'Content-Type':'application/json'},
+  body: JSON.stringify({ visitorId: VID, referrer: document.referrer })
+}).catch(()=>{});
+
+
+
+function setQ(t){
+  document.getElementById('qi').value=t;
+  document.getElementById('qi').focus();
+}
+
+async function ask(){
+  const q=document.getElementById('qi').value.trim();
+  if(!q)return;
+  const btn=document.getElementById('qbtn');
+  const ra=document.getElementById('ra');
+  const dots=document.getElementById('dots');
+  const rc=document.getElementById('rc');
+  const err=document.getElementById('err');
+  const av=document.getElementById('av');
+
+  btn.disabled=true;
+  ra.classList.add('vis');
+  dots.classList.add('vis');
+  rc.classList.remove('vis');
+  err.classList.remove('vis');
+  av.classList.add('loading');
+  ra.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  try{
+    const resp=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({query:q,visitorId:VID})
+    });
+    const p=await resp.json();
+
+    dots.classList.remove('vis');
+    av.classList.remove('loading');
+    rc.classList.add('vis');
+
+    const tag=document.getElementById('rtag');
+    if(p.declined){
+      tag.innerHTML='<span class="type-tag tag-c">Out of Scope — Referral Required</span>';
+      document.getElementById('rtext').innerHTML='';
+      const db=document.getElementById('rdeclined');
+      db.style.display='block';
+      db.innerHTML=`<p>This question asks for guidance about a specific person or clinical case. The EOLPC Knowledge System does not provide patient-specific medical advice.</p><a class="dir-link" href="https://eolpc.org/international-psychedelic-connector-directory/" target="_blank">Find a Practitioner → EOLPC Connector Directory</a>`;
+      document.getElementById('rcites').style.display='none';
+    }else{
+      const srcCount=(p.pubmed||[]).length+(p.semantic||[]).length+(p.europepmc||[]).length+(p.trials||[]).length+(p.exa||[]).length;
+      if(p.type==='A')tag.innerHTML=`<span class="type-tag tag-a">Published Clinical Research · ${srcCount} source${srcCount!==1?'s':''} retrieved live</span>`;
+      else tag.innerHTML='<span class="type-tag tag-b">EOLPC Educational + Web Content</span>';
+      document.getElementById('rdeclined').style.display='none';
+      document.getElementById('rtext').innerHTML=`<p>${p.synthesis}</p>`;
+
+      // Build sources HTML
+      let srcHtml='';
+
+      const mkAcademic=(a,badge,color,link)=>`<div class="cite" style="border-left:3px solid ${color}">
+        <div class="cref" style="color:${color}">${badge}</div>
+        <div class="ctxt">
+          <strong>${a.authors||''} (${a.year||''})</strong> — ${a.title||''}<br>
+          <em>${a.journal||''}</em>${a.doi?` · <a href="https://doi.org/${a.doi}" target="_blank" style="color:${color}">DOI</a>`:''}${(a.pmid)?` · <a href="https://pubmed.ncbi.nlm.nih.gov/${a.pmid}/" target="_blank" style="color:${color}">PubMed</a>`:(a.url?` · <a href="${a.url}" target="_blank" style="color:${color}">View</a>`:'')}
+          ${a.abstract?`<details style="margin-top:5px"><summary style="font-size:11px;cursor:pointer;color:#888">Full abstract ↓</summary><div style="font-size:12px;line-height:1.6;margin-top:5px;color:#6B6459">${a.abstract}</div></details>`:''}
+        </div></div>`;
+
+      if((p.pubmed||[]).length){
+        srcHtml+='<div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2E6B2E;margin:10px 0 5px">PubMed</div>';
+        srcHtml+=(p.pubmed||[]).map(a=>mkAcademic(a,'PMID '+a.pmid,'#2E6B2E')).join('');
+      }
+      if((p.semantic||[]).length){
+        srcHtml+='<div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#3A4A8A;margin:10px 0 5px">Semantic Scholar</div>';
+        srcHtml+=(p.semantic||[]).map(a=>mkAcademic(a,'S2','#3A4A8A')).join('');
+      }
+      if((p.europepmc||[]).length){
+        srcHtml+='<div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5A3A8A;margin:10px 0 5px">Europe PMC</div>';
+        srcHtml+=(p.europepmc||[]).map(a=>mkAcademic(a,'EPMC','#5A3A8A')).join('');
+      }
+      if((p.trials||[]).length){
+        srcHtml+='<div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8A3A2E;margin:10px 0 5px">ClinicalTrials.gov — Active Trials</div>';
+        srcHtml+=(p.trials||[]).map(t=>`<div class="cite" style="border-left:3px solid #8A3A2E">
+          <div class="cref"><a href="${t.url}" target="_blank" style="color:#8A3A2E;text-decoration:none">${t.nctId}</a></div>
+          <div class="ctxt"><strong>${t.title}</strong><br>
+          <span style="font-size:11px;background:#FDF0EC;border-radius:3px;padding:1px 6px;color:#8A3A2E">${t.phase}</span>
+          <span style="font-size:11px;background:#F0F0F0;border-radius:3px;padding:1px 6px;color:#555;margin-left:4px">${t.status}</span>
+          ${t.brief?`<details style="margin-top:5px"><summary style="font-size:11px;cursor:pointer;color:#888">Brief summary ↓</summary><div style="font-size:12px;line-height:1.6;margin-top:5px;color:#6B6459">${t.brief}</div></details>`:''}
+          </div></div>`).join('');
+      }
+      if((p.exa||[]).length){
+        srcHtml+='<div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8A6A1A;margin:10px 0 5px">Web Sources</div>';
+        srcHtml+=(p.exa||[]).map(e=>`<div class="cite" style="border-left:3px solid #B8842A">
+          <div class="cref"><a href="${e.url}" target="_blank" style="color:#B8842A;text-decoration:none;font-size:9px">WEB</a></div>
+          <div class="ctxt"><strong><a href="${e.url}" target="_blank" style="color:#1C1B1F;text-decoration:none">${e.title}</a></strong>
+          ${e.highlights&&e.highlights.length?`<div style="font-size:12px;line-height:1.6;color:#6B6459;margin-top:4px">${e.highlights[0]}</div>`:''}
+          </div></div>`).join('');
+      }
+
+      if(srcHtml){
+        document.getElementById('rcites').style.display='block';
+        document.getElementById('rclist').innerHTML=srcHtml;
+      }else{
+        document.getElementById('rcites').style.display='none';
+      }
+    }
+  }catch(e){
+    dots.classList.remove('vis');
+    av.classList.remove('loading');
+    err.classList.add('vis');
+  }
+  btn.disabled=false;
+}
+
+document.getElementById('qi').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))ask();
+});
+</script>
+</body>
+</html>
