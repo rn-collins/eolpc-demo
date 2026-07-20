@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>EOLPC Knowledge System — Technology Preview</title>
+<meta name="description" content="A live AI knowledge system for psychedelic-assisted end-of-life care — retrieving real primary sources from PubMed, ClinicalTrials.gov, and more. Built for EOLPC by Aloha AI Consulting.">
+<meta property="og:title" content="EOLPC Knowledge System | End of Life Psychedelic Care">
+<meta property="og:description" content="Ask any clinical, legal, or educational question about psychedelic-assisted end-of-life care. Live sources. Real research. Built for practitioners, families, and people facing serious illness.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1A3A1A">
+<title>EOLPC Knowledge System | End of Life Psychedelic Care</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,7 +28,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--dg);padding:14px 24px;dis
 .nav-logo{width:32px;height:32px;background:var(--warm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--dg);flex-shrink:0}
 .nav-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(246,243,236,.9);letter-spacing:.08em;text-transform:uppercase}
 .nav-sub{font-size:12px;color:rgba(246,243,236,.5);font-style:italic;margin-top:1px}
-.nav-badge{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.5);border:1px solid rgba(246,243,236,.15);border-radius:12px;padding:3px 10px;letter-spacing:.04em}
+.nav-badge{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.75);border:1px solid rgba(246,243,236,.3);border-radius:12px;padding:3px 10px;letter-spacing:.04em}
 
 /* HERO */
 .hero{max-width:760px;margin:0 auto;padding:56px 24px 32px}
@@ -145,56 +150,161 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 .cta-inner{max-width:600px;margin:0 auto;text-align:center}
 .cta-inner h2{font-size:32px;font-weight:300;color:var(--warm);margin-bottom:16px;line-height:1.3}
 .cta-inner p{font-size:17px;color:rgba(246,243,236,.7);margin-bottom:32px;line-height:1.7}
-.cta-btn{display:inline-block;background:var(--warm);color:var(--dg);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border-radius:8px;text-decoration:none;transition:all .15s}
+.cta-btn{display:inline-block;background:var(--warm);color:var(--dg);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all .15s}
 .cta-btn:hover{background:#EDE8E0}
+/* Lead form */
+.lead-form{max-width:440px;margin:0 auto;text-align:left}
+.lead-field{width:100%;background:rgba(246,243,236,.12);border:1px solid rgba(246,243,236,.2);border-radius:8px;padding:12px 16px;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;color:var(--warm);margin-bottom:10px;outline:none;transition:border-color .2s}
+.lead-field::placeholder{color:rgba(246,243,236,.4)}
+.lead-field:focus{border-color:rgba(246,243,236,.5)}
+.lead-field.textarea{resize:vertical;min-height:80px;max-height:160px}
+.lead-submit{width:100%;background:var(--warm);color:var(--dg);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:15px 24px;border-radius:8px;border:none;cursor:pointer;transition:all .15s;margin-top:4px}
+.lead-submit:hover{background:#EDE8E0}
+.lead-submit:disabled{opacity:.5;cursor:not-allowed}
+.lead-result{margin-top:14px;font-size:15px;line-height:1.6;color:rgba(246,243,236,.8)}
+/* Built-by button */
+.built-by{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9px;color:rgba(246,243,236,.3);letter-spacing:.05em;text-decoration:none;border:1px solid rgba(246,243,236,.12);border-radius:20px;padding:4px 10px;transition:all .2s;white-space:nowrap}
+.built-by:hover{color:rgba(246,243,236,.6);border-color:rgba(246,243,236,.25)}
 
-/* FOOTER */
-footer{background:#0F2410;padding:24px;text-align:center}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;top:-40px;left:0;background:var(--dg);color:var(--warm);padding:8px 16px;z-index:1000;font-family:Syne,sans-serif;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 6px 0}.skip-link:focus{top:0}/* FOOTER */
+footer{background:#0F2410;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer p{font-family:'DM Mono',monospace;font-size:10px;color:rgba(246,243,236,.35);letter-spacing:.04em;line-height:1.8}
 footer a{color:rgba(246,243,236,.5);text-decoration:none}
+
+/* VOICE INPUT + OUTPUT */
+.voice-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.mic-btn{background:var(--warm);border:1.5px solid var(--border);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;flex-shrink:0;font-size:16px}
+.mic-btn:hover{background:var(--cite-bg);border-color:var(--mg)}
+.mic-btn.listening{background:#FDE8E8;border-color:#C0392B;animation:pulse-mic 1s infinite}
+@keyframes pulse-mic{0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,.3)}50%{box-shadow:0 0 0 6px rgba(192,57,43,0)}}
+.listen-btn{display:none;align-items:center;gap:5px;background:var(--cite-bg);border:1px solid #B8D4B8;border-radius:20px;padding:5px 12px;font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mg);cursor:pointer;transition:all .15s}
+.listen-btn:hover{background:#D4EACC}
+.listen-btn.vis{display:flex}
+.listen-btn.playing{color:var(--warn);border-color:#E8C0B8;background:var(--warn-bg)}
+.voice-hint{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.03em}
+
+
+/* PATH 1/2 ASK BANNER */
+.ask-banner{max-width:760px;margin:24px auto 0;padding:0 24px 40px}
+.ask-toggle{display:inline-flex;background:#EDF3ED;border-radius:30px;padding:3px;gap:2px;margin-bottom:14px}
+.ask-btn{padding:7px 18px;border:none;border-radius:26px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;background:transparent;color:var(--muted)}
+.ask-btn.active{background:var(--dg);color:var(--warm);box-shadow:0 1px 4px rgba(26,58,26,.3)}
+.ask-detail{font-size:16px;line-height:1.75;color:var(--text);font-family:'Cormorant Garamond',serif}
+.ask-detail strong{color:var(--dg);font-weight:600}
+.ask-detail .ask-sub{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.ask-year{display:inline-block;background:var(--cite-bg);border:1px solid #B8D4B8;border-radius:5px;padding:3px 10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--mg);margin-right:8px;font-weight:500}
+
+
+/* CHIP EVIDENCE PANEL */
+.evidence-panel{display:none;margin-top:10px;margin-bottom:4px;background:white;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp .25s ease}
+.evidence-panel.vis{display:block}
+.ev-head{background:var(--dg);padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
+.ev-head-txt{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(246,243,236,.7)}
+.ev-close{background:none;border:none;color:rgba(246,243,236,.5);cursor:pointer;font-size:14px;padding:0 2px;line-height:1}
+.ev-body{padding:12px 14px}
+.ev-row{display:flex;gap:10px;padding:7px 0;border-bottom:.5px solid #F0EAE2;align-items:start}
+.ev-row:last-child{border-bottom:none;padding-bottom:0}
+.ev-badge{font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.05em;padding:3px 7px;border-radius:3px;flex-shrink:0;margin-top:1px}
+.ev-badge-pm{background:var(--cite-bg);color:var(--mg)}
+.ev-badge-ex{background:#FDF9F0;color:#8A6A1A;border:1px solid #E8D4A8}
+.ev-badge-eolpc{background:#EDF0F8;color:#3A4A8A;border:1px solid #B8C4E0}
+.ev-txt{font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.6;color:var(--text)}
+.ev-txt strong{font-weight:600;color:var(--dg)}
+.ev-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px}
+
+
+/* 5-LAYER KNOWLEDGE BASE */
+.kb-section{max-width:860px;margin:0 auto;padding:60px 24px}
+.kb-section h2{font-size:28px;font-weight:300;color:var(--dg);margin-bottom:8px}
+.kb-desc{font-size:17px;color:var(--muted);margin-bottom:32px;max-width:580px;line-height:1.7}
+.kb-layers{display:flex;flex-direction:column;gap:6px}
+.kb-layer{border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.kb-layer:hover{box-shadow:0 2px 8px rgba(26,58,26,.08)}
+.kb-trigger{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;background:white;user-select:none}
+.kb-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:white;background:var(--dg);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kb-trigger-text{flex:1}
+.kb-label{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dg);margin-bottom:3px}
+.kb-summary{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.02em}
+.kb-arrow{font-size:12px;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.kb-layer.open .kb-arrow{transform:rotate(180deg)}
+.kb-body{display:none;padding:0 18px 16px 54px;background:white;border-top:.5px solid var(--border)}
+.kb-layer.open .kb-body{display:block}
+.kb-body p{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--text);margin-bottom:8px}
+.kb-body p:last-child{margin-bottom:0}
+.kb-chips-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.kb-chip-sm{font-family:'DM Mono',monospace;font-size:10px;color:var(--dg);background:var(--cite-bg);border:1px solid #B8D4B8;border-radius:3px;padding:2px 8px}
+
 </style>
 </head>
-<body>
+<body><a href="#main-content" class="skip-link">Skip to main content</a><main id="main-content" role="main">
 
 <nav>
   <div class="nav-logo">E</div>
   <div>
     <div class="nav-title">EOLPC Knowledge System</div>
-    <div class="nav-sub">Technology preview for RiverStyx Foundation</div>
+    <div class="nav-sub">AI knowledge system · Early access</div>
   </div>
-  <div class="nav-badge">Prototype · June 2026</div>
+  <div class="nav-badge">Prototype · 2026</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-kicker">End of Life Psychedelic Care</div>
-  <h1 class="hero-headline">The research you helped build,<br><em>accessible to every practitioner</em><br>at every hour.</h1>
+  <h1 class="hero-headline">The research you helped build,<br><em>accessible to every practitioner,<br>family member, and person<br>facing serious illness.</em></h1>
   <p class="hero-body">
-    This is a working prototype of the <strong>EOLPC Knowledge Intelligence System</strong>. Type any query and watch it retrieve real primary sources — live from PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa. Every result is an actual paper, a registered trial, or a sourced web document. Nothing is simulated.
+    This is a working prototype of the <strong>EOLPC Knowledge Intelligence System</strong> — a searchable AI layer built on real research, practitioner knowledge, and legal frameworks. Type any question and it retrieves primary sources live from PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa. Every result is an actual paper, a registered trial, or a sourced document. Nothing is invented.
   </p>
 </section>
+
+<!-- PATH 1/2 ASK BANNER -->
+<div class="ask-banner">
+  <div class="ask-toggle">
+    <button class="ask-btn active" id="ask-p1" onclick="setAskPath(1)">Path 1 — Single grant</button>
+    <button class="ask-btn" id="ask-p2" onclick="setAskPath(2)">Path 2 — Two grants</button>
+  </div>
+  <div id="ask-detail-p1" class="ask-detail">
+    <strong>$253,000 – $419,000</strong> total capital raise
+    <span class="ask-sub">14-phase full build · Web + native iOS + Android · 1,010–1,520 hours · 9 months to live</span>
+  </div>
+  <div id="ask-detail-p2" class="ask-detail" style="display:none">
+    <span class="ask-year">Year 1</span><strong>$202,000 – $330,000</strong> — web system + native iOS · live within 12 months of funding
+    <span class="ask-sub"><span class="ask-year">Year 2</span><strong>$50,000 – $92,000</strong> — Android + institutional integrations · combined $252,000–$422,000</span>
+  </div>
+</div>
 
 <hr class="section-rule">
 
 <!-- DEMO -->
 <section class="demo-wrap">
   <div class="demo-inner">
-    <div class="section-label">Live prototype</div>
-    <p class="demo-intro">Try one of the queries below — or type your own. Each query hits PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa simultaneously. Results are real primary sources retrieved live. Patient-specific medical advice queries are declined and routed to the EOLPC Connector Directory.</p>
+    <div class="section-label">Interactive demo</div>
+    <p class="demo-intro">Try one of the questions below — or ask your own. Every query searches PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa at the same time. Results are real primary sources, retrieved live. Source links are included with research-backed responses. Questions about a specific person are gently declined and routed to the EOLPC Connector Directory, where you can find a practitioner.</p>
 
     <div class="chips">
-      <div class="chip" onclick="setQ(this.textContent)">What do the Hopkins and NYU psilocybin trials show about EOL anxiety and depression?</div>
-      <div class="chip" onclick="setQ(this.textContent)">How does ketamine compare to psilocybin for end-of-life psychedelic care?</div>
-      <div class="chip" onclick="setQ(this.textContent)">What does the EOLPC practitioner survey show about facilitating EOL psychedelic sessions?</div>
-      <div class="chip" onclick="setQ(this.textContent)">What is the current legal status of psilocybin for end-of-life care in Oregon?</div>
+      <div class="chip" onclick="setQ(this.textContent,0)">What do the Hopkins and NYU psilocybin trials show about anxiety and depression in people facing life-threatening illness?</div>
+      <div class="chip" onclick="setQ(this.textContent,1)">What does current research show about ketamine therapy for people facing end-of-life psychological distress?</div>
+      <div class="chip" onclick="setQ(this.textContent,2)">What do EOLPC-trained practitioners say about supporting someone through a psychedelic session?</div>
+      <div class="chip" onclick="setQ(this.textContent,3)">Is psilocybin legally available in Oregon for someone facing a serious illness, and how does a person access it?</div>
     </div>
 
+<div class="evidence-panel" id="ev-panel">
+  <div class="ev-head">
+    <span class="ev-head-txt" id="ev-title">Study evidence</span>
+    <button class="ev-close" onclick="closeEvidence()">✕</button>
+  </div>
+  <div class="ev-body" id="ev-body"></div>
+</div>
+
     <div class="qbox">
-      <textarea class="qtextarea" id="qi" placeholder="Ask a clinical, legal, or educational question about psychedelic-assisted end-of-life care…" rows="3"></textarea>
+      <label for="qi" class="sr-only">Ask a question</label><textarea class="qtextarea" id="qi" aria-label="Ask a question about psychedelic-assisted end-of-life care" placeholder="Ask a clinical, legal, or educational question about psychedelic-assisted end-of-life care…" rows="3"></textarea>
       <div class="qfooter">
-        <div class="qnote">Responses cite primary sources · Patient-specific medical advice is declined</div>
-        <button class="qbtn" id="qbtn" onclick="ask()">Ask →</button>
+        <div class="qnote">Source links available for research-backed responses · Patient-specific advice declined</div>
+        <button class="qbtn" id="qbtn" onclick="ask()" aria-label="Submit question">Ask →</button>
       </div>
+    </div>
+    <div class="voice-row">
+      <button class="mic-btn" id="mic-btn" onclick="toggleMic()" title="Speak your question" aria-label="Voice input">🎤</button>
+      <span class="voice-hint" id="mic-hint">Click mic to speak your question</span>
     </div>
 
     <div class="resp-area" id="ra">
@@ -207,13 +317,13 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
       </div>
       <div class="dots" id="dots">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dtext">Retrieving from EOLPC knowledge base…</div>
+        <div class="dtext">Searching medical research databases…</div>
       </div>
       <div class="err" id="err">Unable to reach the knowledge system. Please try again.</div>
       <div class="resp-content" id="rc">
         <div class="resp-body">
           <div id="rtag"></div>
-          <div class="resp-text" id="rtext"></div>
+          <div class="resp-text" id="rtext"><span id="synthesis-text"></span></div>
           <div id="rdeclined" style="display:none" class="declined-box"></div>
         </div>
         <div class="cites" id="rcites" style="display:none">
@@ -221,7 +331,8 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
           <div id="rclist"></div>
         </div>
         <div class="resp-foot">
-          <div class="rfoot-txt">EOLPC Knowledge System · Closed access · All responses cite primary sources</div>
+          <button class="listen-btn" id="listen-btn" onclick="speakResponse()" aria-label="Listen to response aloud">🔊 Listen</button>
+          <div class="rfoot-txt">EOLPC Knowledge System · Community access · Research-backed responses include source links</div>
           <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(107,100,89,.45);letter-spacing:.04em">Aloha AI Consulting · Prototype</div>
         </div>
       </div>
@@ -234,8 +345,8 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
 <!-- ARCHITECTURE -->
 <section class="arch-section">
   <div class="section-label">How it works</div>
-  <h2>5-layer RAG architecture</h2>
-  <p class="arch-desc">Every response retrieves from five verified data layers, attaches a primary source citation, and routes through a disclaimer classifier before reaching the user. The diagram below shows the <strong>full production system design</strong>. This prototype demonstrates the retrieval layer using PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa — in place of the full vector embedding pipeline shown.</p>
+  <h2>Five-layer RAG architecture</h2>
+  <p class="arch-desc">Every response retrieves from five verified data layers, attaches a primary source citation, and routes through a disclaimer check before reaching the user. The diagram below shows the <strong>complete production system design</strong>. This prototype demonstrates the live retrieval layer — using PubMed, Semantic Scholar, Europe PMC, ClinicalTrials.gov, and Exa — in place of the full vector embedding pipeline shown in the diagram.</p>
   <div class="arch-svg-wrap">
     <svg width="100%" viewBox="0 0 680 465" role="img" xmlns="http://www.w3.org/2000/svg">
       <title>EOLPC Knowledge Intelligence System — RAG Architecture</title>
@@ -249,11 +360,11 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
           .a-mono{font-family:'DM Mono',monospace;font-size:10px;fill:#6B6459}
         </style>
       </defs>
-      <text class="a-mono" x="22" y="21">EOLPC Knowledge Intelligence System · Closed RAG Architecture · Aloha AI Consulting · June 2026</text>
+      <text class="a-mono" x="22" y="21">EOLPC Knowledge Intelligence System · RAG Architecture · Aloha AI Consulting · June 2026</text>
       <rect x="12" y="28" width="656" height="432" rx="6" fill="none" stroke="#D4CABC" stroke-width="0.5" stroke-dasharray="6 4"/>
       <!-- Access -->
       <rect x="32" y="46" width="616" height="52" rx="4" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
-      <text class="a-th" x="340" y="68" text-anchor="middle" dominant-baseline="central">Credentialed access only</text>
+      <text class="a-th" x="340" y="68" text-anchor="middle" dominant-baseline="central">Community access — email registration</text>
       <text class="a-ts" x="340" y="86" text-anchor="middle" dominant-baseline="central">Authentication · RBAC · practitioner + institutional staff tiers · Supabase</text>
       <!-- Arrow 1 -->
       <line x1="340" y1="98" x2="340" y2="113" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
@@ -261,10 +372,10 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
       <rect x="32" y="116" width="616" height="116" rx="4" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5"/>
       <text class="a-th" x="340" y="134" text-anchor="middle" dominant-baseline="central">5-layer knowledge base</text>
       <text class="a-ts" x="46" y="152">Layer 1 · 36 in-depth clinical interviews (Unlimited Sciences deathwork dataset)</text>
-      <text class="a-ts" x="46" y="170">Layer 2 · Practitioner survey N=163 (EOLPC deathwork study)</text>
+      <text class="a-ts" x="46" y="170">Layer 2 · Practitioner survey N=100 (Psychedelic Death Worker Study, Arrington)</text>
       <text class="a-ts" x="46" y="188">Layer 3 · EOLPC course curriculum + facilitator guides + training materials</text>
-      <text class="a-ts" x="46" y="206">Layer 4 · EOL legal framework + regulatory documents (Tucker JD, Antithesis Law)</text>
-      <text class="a-ts" x="46" y="224">Layer 5 · Published research database · 20+ key studies (Hopkins, NYU, MAPS, KRF)</text>
+      <text class="a-ts" x="46" y="206">Layer 4 · Clinical forums — EOL practitioner Q&amp;A from professional networks (permission-based)</text>
+      <text class="a-ts" x="46" y="224">Layer 5 · Legal &amp; policy framework · 30+ jurisdictions (Ray Allen JD, Antithesis Law)</text>
       <!-- Arrow 2 -->
       <line x1="340" y1="232" x2="340" y2="247" stroke="#6B6459" stroke-width="0.5" marker-end="url(#arr)"/>
       <!-- RAG Pipeline -->
@@ -291,28 +402,155 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
   </div>
 </section>
 
+
+<!-- 5-LAYER KNOWLEDGE BASE -->
+<section style="background:#F8F6F0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 24px;">
+  <div class="kb-section" style="padding:0;max-width:860px;margin:0 auto;">
+    <div class="section-label">What the system knows</div>
+    <h2 style="font-size:28px;font-weight:300;color:var(--dg);margin-bottom:8px;">5-layer knowledge base</h2>
+    <p class="kb-desc">Every response retrieves from five verified data layers. Click any layer to see exactly what's in it.</p>
+    <div class="kb-layers">
+
+      <!-- Layer 1 -->
+      <div class="kb-layer" id="kbl1">
+        <div class="kb-trigger" onclick="toggleKb('kbl1')">
+          <div class="kb-num">1</div>
+          <div class="kb-trigger-text">
+            <div class="kb-label">Clinical Q&amp;A · 36 In-Depth Zoom Interviews</div>
+            <div class="kb-summary">Unlimited Sciences · EOLPC Psychedelic Death Worker Study · Zak Arrington, University of Chicago</div>
+          </div>
+          <span class="kb-arrow">▾</span>
+        </div>
+        <div class="kb-body">
+          <p>Thirty-six hour-long Zoom interviews with practitioners who hold dual experience in both psychedelic facilitation and end-of-life care — the only population qualified to speak to this intersection. Conducted by Zak Arrington (University of Chicago) in partnership with Unlimited Sciences and EOLPC.</p>
+          <p>Topics covered: home-based session protocols, managing psychological emergencies in palliative contexts, facilitating acceptance of death, family dynamics during sessions, integration in the context of limited remaining life, and spiritual care coordination with hospice teams.</p>
+          <div class="kb-chips-row">
+            <span class="kb-chip-sm">36 interviews</span>
+            <span class="kb-chip-sm">Hour-long each</span>
+            <span class="kb-chip-sm">Transcribed + embedded</span>
+            <span class="kb-chip-sm">Unlimited Sciences dataset</span>
+            <span class="kb-chip-sm">Publication anticipated 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="kb-layer" id="kbl2">
+        <div class="kb-trigger" onclick="toggleKb('kbl2')">
+          <div class="kb-num">2</div>
+          <div class="kb-trigger-text">
+            <div class="kb-label">Survey Data · N=100 Practitioner Survey</div>
+            <div class="kb-summary">Psychedelic Death Worker Study · 63 qualitative responses (subset of 100) · Arrington et al.</div>
+          </div>
+          <span class="kb-arrow">▾</span>
+        </div>
+        <div class="kb-body">
+          <p>Structured survey of 100 practitioners with both psychedelic facilitation and end-of-life care experience — the only dataset of its kind globally. Of those 100, 63 provided in-depth qualitative responses; these 63 are a subset of the 100, not an additional cohort. 36 practitioners separately participated in the Zoom interviews that form Layer 1.</p>
+          <p>Survey covers: frequency and context of EOL psychedelic work, session structures, outcomes observed, challenges encountered, and recommendations for practitioner training. Quantitative data supports Layer 2; qualitative data supplements Layer 1.</p>
+          <div class="kb-chips-row">
+            <span class="kb-chip-sm">N=100 survey respondents</span>
+            <span class="kb-chip-sm">N=63 qualitative responses (subset)</span>
+            <span class="kb-chip-sm">Arrington et al., forthcoming 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="kb-layer" id="kbl3">
+        <div class="kb-trigger" onclick="toggleKb('kbl3')">
+          <div class="kb-num">3</div>
+          <div class="kb-trigger-text">
+            <div class="kb-label">Course Recordings · 200+ Hours EOLPC Curriculum</div>
+            <div class="kb-summary">Multiple structured live courses per year since 2023 · 700+ unique enrolled students · 7,600+ free event registrations</div>
+          </div>
+          <span class="kb-arrow">▾</span>
+        </div>
+        <div class="kb-body">
+          <p>Recordings and transcripts from EOLPC's structured live training programs: clinical protocol courses, spiritual care courses, facilitator development intensives, and specialized workshops. Multiple courses per year since 2023, with 700+ unique enrolled students and 7,600+ registrations for free online educational events.</p>
+          <p>Includes facilitator guides, module outlines, case presentations, guest expert sessions (Ben Malcolm, Dr. David Dansky, and others), and Q&amp;A archives. This layer gives the system EOLPC's proprietary instructional voice and clinical framing.</p>
+          <div class="kb-chips-row">
+            <span class="kb-chip-sm">200+ hours course recordings</span>
+            <span class="kb-chip-sm">Facilitator guides</span>
+            <span class="kb-chip-sm">700+ enrolled students</span>
+            <span class="kb-chip-sm">7,600+ event registrations</span>
+            <span class="kb-chip-sm">Expert guest sessions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 4 -->
+      <div class="kb-layer" id="kbl4">
+        <div class="kb-trigger" onclick="toggleKb('kbl4')">
+          <div class="kb-num">4</div>
+          <div class="kb-trigger-text">
+            <div class="kb-label">Clinical Forums · Practitioner Q&amp;A Networks</div>
+            <div class="kb-summary">Ben Malcolm · Dr. David Dansky · YouTube educational content (~8–10 hrs each) · Google Group archives pending permission</div>
+          </div>
+          <span class="kb-arrow">▾</span>
+        </div>
+        <div class="kb-body">
+          <p>Educational content from two of the most respected practitioners working at the intersection of psychedelics and end-of-life care: Ben Malcolm (Spirit Pharmacist) and Dr. David Dansky. Primary source: YouTube-hosted educational video series — approximately 8–10 hours of content each — covering drug interactions, dose considerations, challenging presentations, facilitator safety, and clinical edge cases.</p>
+          <p>Note: this layer carries the highest confidence-calibration requirement. YouTube content requires transcript extraction, source attribution, and rigorous accuracy review before embedding. Google Group Q&amp;A archives are a planned additional source, pending explicit permission from community administrators — not yet secured.</p>
+          <div class="kb-chips-row">
+            <span class="kb-chip-sm">Ben Malcolm (Spirit Pharmacist)</span>
+            <span class="kb-chip-sm">Dr. David Dansky</span>
+            <span class="kb-chip-sm">YouTube educational series (~8–10 hrs each)</span>
+            <span class="kb-chip-sm">Google Group archives (pending permission)</span>
+            <span class="kb-chip-sm">Highest confidence-calibration requirement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 5 -->
+      <div class="kb-layer" id="kbl5">
+        <div class="kb-trigger" onclick="toggleKb('kbl5')">
+          <div class="kb-num">5</div>
+          <div class="kb-trigger-text">
+            <div class="kb-label">Legal &amp; Policy Framework · 30+ Jurisdictions</div>
+            <div class="kb-summary">Ray Allen JD · Antithesis Law, Sacramento · EOLPC's own legal counsel · Oregon · Canada · Europe</div>
+          </div>
+          <span class="kb-arrow">▾</span>
+        </div>
+        <div class="kb-body">
+          <p>Regulatory and legal analysis across 30+ jurisdictions, curated and reviewed by Ray Allen JD (Antithesis Law, Sacramento) — EOLPC's own legal counsel. Covers therapeutic access frameworks, compassionate-use pathways, decriminalization models, facilitator licensing, and EOL-specific legal considerations.</p>
+          <p>Key jurisdictions: Oregon Measure 109 (active licensed services), Canada Special Access Program, New Mexico Psilocybin Access Act, Switzerland compassionate access, Netherlands retreat frameworks, and select Latin American and Caribbean jurisdictions. Integrated with Psychedelic Alpha's Worldwide Psychedelic Laws Tracker for ongoing updates.</p>
+          <div class="kb-chips-row">
+            <span class="kb-chip-sm">30+ jurisdictions</span>
+            <span class="kb-chip-sm">Ray Allen JD · Antithesis Law</span>
+            <span class="kb-chip-sm">Oregon Measure 109</span>
+            <span class="kb-chip-sm">Canada SAP</span>
+            <span class="kb-chip-sm">Europe compassionate-use</span>
+            <span class="kb-chip-sm">Psychedelic Alpha tracker</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <hr class="section-rule">
 
 <!-- SCOPE (4 SCREENS) -->
 <section class="scope-section">
   <div class="scope-inner">
     <div class="section-label">Full system scope</div>
-    <h2>Four screens, one credentialed product</h2>
-    <p class="scope-desc">From practitioner login through institutional admin, the complete system architecture fits in a single credentialed access layer.</p>
+    <h2>Four screens. One community-access system.</h2>
+    <p class="scope-desc">From practitioner login through institutional admin, the complete system architecture fits behind a single community-access layer.</p>
     <div class="screens-grid">
 
       <!-- Screen 1: Login -->
       <div class="screen-card">
         <div class="sc-header">
           <div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot"></div>
-          <div class="sc-name">1 · Login + credentialing</div>
+          <div class="sc-name">1 · Login + registration</div>
         </div>
         <div class="sc-body">
           <div class="sc-field" style="font-size:11px;color:#888;margin-bottom:10px">EOLPC Knowledge System — Practitioner Access</div>
           <div class="sc-field">practitioner@hospital.org</div>
-          <div class="sc-field">EOLPC-2024-XXXX</div>
+          <div class="sc-field" style="color:#AAA;">Email address or registration token</div>
           <div class="sc-btn">Sign in →</div>
-          <div style="font-size:10px;color:#AAA;margin-top:8px;line-height:1.5">Available to verified healthcare professionals and EOLPC course graduates</div>
+          <div style="font-size:10px;color:#AAA;margin-top:8px;line-height:1.5">Open to the community — practitioners, families, and people facing serious illness</div>
         </div>
       </div>
 
@@ -339,8 +577,8 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
         </div>
         <div class="sc-body">
           <div class="sc-tag tag-a" style="background:#EDF3ED;color:#2E6B2E;font-size:9px">Published Clinical Research</div>
-          <div class="sc-resp">Ross et al. 2016 found an 83% antidepressant response rate at 6-week follow-up in N=29 cancer patients… <span style="color:#2E6B2E;font-size:10px">[1]</span> Sustained at 4.5-year follow-up (Agin-Liebes 2020). <span style="color:#2E6B2E;font-size:10px">[2]</span></div>
-          <div class="sc-cite-item">[1] Ross et al. 2016 · J. Psychopharmacology · PMID 27685429</div>
+          <div class="sc-resp">Ross et al. 2016 found rapid, sustained reductions in anxiety and depression — 60–80% of N=29 advanced-cancer patients met clinically significant response criteria at 6.5-month follow-up. <span style="color:#2E6B2E;font-size:10px">[1]</span> Effects sustained at 4.5-year follow-up (Agin-Liebes 2020). <span style="color:#2E6B2E;font-size:10px">[2]</span></div>
+          <div class="sc-cite-item">[1] Ross et al. 2016 · J. Psychopharmacology · PMID 27909164</div>
           <div class="sc-cite-item">[2] Agin-Liebes et al. 2020 · J. Psychopharmacology</div>
         </div>
       </div>
@@ -359,7 +597,7 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
           </div>
           <div style="font-size:10px;color:#AAA;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Knowledge base health</div>
           <div class="sc-bar-row"><div class="sc-blbl">Layer 1 · Interviews</div><div class="sc-bar-bg"><div class="sc-bar" style="width:100%"></div></div><div style="font-size:10px;color:#AAA">36</div></div>
-          <div class="sc-bar-row"><div class="sc-blbl">Layer 2 · Survey</div><div class="sc-bar-bg"><div class="sc-bar" style="width:100%"></div></div><div style="font-size:10px;color:#AAA">163</div></div>
+          <div class="sc-bar-row"><div class="sc-blbl">Layer 2 · Survey</div><div class="sc-bar-bg"><div class="sc-bar" style="width:100%"></div></div><div style="font-size:10px;color:#AAA" title="N=100 survey; 63 provided qualitative responses (subset, not additive)">100</div></div>
           <div class="sc-bar-row"><div class="sc-blbl">Layer 5 · Research</div><div class="sc-bar-bg"><div class="sc-bar" style="width:90%"></div></div><div style="font-size:10px;color:#AAA">23</div></div>
         </div>
       </div>
@@ -383,7 +621,7 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
         MS in Anatomy & Neurobiology (Boston University, 2024). JD candidate, Northeastern University School of Law (2029). Active law clerk at Antithesis Law — EOLPC's own legal counsel — where she has direct exposure to the psychedelics legal framework this system is built on. AI Workflow Developer at Croke Fairchild Duarte & Beres deploying the Harvey platform across legal operations.
       </p>
       <p class="builder-bio">
-        She is not an outside vendor. The person building this system is already inside the legal, clinical, and AI contexts it operates in — simultaneously. That combination does not exist anywhere else.
+        She is not an outside vendor. The person building this system is already embedded inside the legal, clinical, and AI contexts it serves — simultaneously. That combination is rare.
       </p>
       <div class="cred-chips">
         <div class="cred-chip">MS Anatomy & Neurobiology · BU</div>
@@ -400,50 +638,69 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-inner">
-    <h2>The system works.<br>The build takes six months.<br>The ask is 30 minutes.</h2>
-    <p>Christine Caldwell and RN Collins are available for a brief conversation about the build plan, the technology approach, and which funding structure fits RiverStyx's current giving philosophy.</p>
-    <button id="ctaBtn" class="cta-btn" onclick="contactChristine()" style="margin-bottom:16px;cursor:pointer;border:none">
-      Request 30 minutes with Christine →
-    </button>
-    <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(246,243,236,.45);letter-spacing:.04em;margin-top:4px">
-      christine@eolpc.org
+    <h2>The system works.<br>The build takes nine months.<br>The ask is 30 minutes.</h2>
+    <p>Christine Caldwell and RN Collins are available for a brief conversation about the build plan, the technology approach, and how this fits your funding priorities. No pitch deck. Just a conversation.</p>
+    <div class="lead-form">
+      <label for="lfName" class="sr-only">Your name</label><input class="lead-field" id="lfName" type="text" placeholder="Your name (optional)" autocomplete="name">
+      <label for="lfEmail" class="sr-only">Your email address (required)</label><input class="lead-field" id="lfEmail" type="email" placeholder="Your email address (required)" autocomplete="email" required>
+      <textarea class="lead-field textarea" id="lfMsg" placeholder="Anything you'd like Christine to know before the call (optional)"></textarea>
+      <button class="lead-submit" id="lfBtn" onclick="submitLead()">Request 30 minutes with Christine →</button>
+      <div class="lead-result" id="lfResult"></div>
     </div>
   </div>
 </section>
 
-<footer>
+</main><footer>
   <p>
-    End of Life Psychedelic Care · <a href="https://eolpc.org">eolpc.org</a> · christine@eolpc.org<br>
-    Technology partner: Aloha AI Consulting · collins.ra@northeastern.edu<br>
-    This is a prototype demonstration of the EOLPC Knowledge Intelligence System, June 2026.<br>
-    Not a clinical tool. Responses are for demonstration purposes only.
+    End of Life Psychedelic Care · <a href="https://eolpc.org" target="_blank" rel="noopener">eolpc.org</a> · christine@eolpc.org<br>
+    Not a clinical tool. Not medical advice. Responses demonstrate prototype functionality only.
   </p>
+  <a class="built-by" href="mailto:collins.ra@northeastern.edu?subject=EOLPC Demo — inquiry" title="AI Architect: RN Collins · Aloha AI Consulting">
+    ◆ Built by Aloha AI
+  </a>
 </footer>
 
 <script>
 // Generate visitor ID for this session
-function contactChristine() {
-  const email = 'christine@eolpc.org';
-  const subject = encodeURIComponent('EOLPC Knowledge System — 30 minutes');
-  const btn = document.getElementById('ctaBtn');
+async function submitLead() {
+  const name    = (document.getElementById('lfName')?.value || '').trim();
+  const email   = (document.getElementById('lfEmail')?.value || '').trim();
+  const message = (document.getElementById('lfMsg')?.value || '').trim();
+  const btn     = document.getElementById('lfBtn');
+  const result  = document.getElementById('lfResult');
 
-  // Try to open mail client
-  window.location.href = `mailto:${email}?subject=${subject}`;
-
-  // Copy email to clipboard as fallback (works silently)
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(email).catch(() => {});
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    result.innerHTML = '<span style="color:#F0A080">Please enter a valid email address.</span>';
+    return;
   }
 
-  // Show feedback in the button
-  const orig = btn.innerHTML;
-  btn.innerHTML = '✓ Email address copied · christine@eolpc.org';
-  btn.style.background = '#2A5A2A';
-  setTimeout(() => {
-    btn.innerHTML = orig;
-    btn.style.background = '';
-  }, 5000);
+  btn.disabled = true;
+  btn.textContent = 'Sending\u2026';
+  result.innerHTML = '';
+
+  try {
+    const r = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message, visitorId: VID })
+    });
+
+    if (r.ok) {
+      btn.style.display = 'none';
+      result.innerHTML = `
+        <strong style="color:rgba(246,243,236,.95)">\u2713 Inquiry received.</strong><br>
+        Christine Caldwell and RN Collins have been notified. You\u2019ll hear from Christine at
+        <strong style="color:rgba(246,243,236,.95)">${email}</strong> shortly.`;
+    } else {
+      throw new Error('server error');
+    }
+  } catch (_) {
+    btn.disabled = false;
+    btn.textContent = 'Try again \u2192';
+    result.innerHTML = 'Something went wrong. Email Christine directly: <a href="mailto:christine@eolpc.org" style="color:rgba(246,243,236,.7)">christine@eolpc.org</a>';
+  }
 }
+
 
 const VID = sessionStorage.getItem('eolpc_vid') || (() => {
   const id = Math.random().toString(36).slice(2);
@@ -460,9 +717,10 @@ fetch('/api/beacon', {
 
 
 
-function setQ(t){
+function setQ(t, idx){
   document.getElementById('qi').value=t;
   document.getElementById('qi').focus();
+  if (idx !== undefined) showEvidence(idx); else closeEvidence();
 }
 
 async function ask(){
@@ -493,12 +751,17 @@ async function ask(){
 
     dots.classList.remove('vis');
     av.classList.remove('loading');
+    err.classList.remove('vis');
     rc.classList.add('vis');
 
     const tag=document.getElementById('rtag');
     if(p.declined){
       tag.innerHTML='<span class="type-tag tag-c">Out of Scope — Referral Required</span>';
       document.getElementById('rtext').innerHTML='';
+      document.getElementById('synthesis-text').textContent='';
+      const lb2 = document.getElementById('listen-btn');
+      if (lb2) { lb2.classList.remove('vis','playing'); lb2.innerHTML='🔊 Listen'; }
+      window.speechSynthesis && window.speechSynthesis.cancel();
       const db=document.getElementById('rdeclined');
       db.style.display='block';
       db.innerHTML=`<p>This question asks for guidance about a specific person or clinical case. The EOLPC Knowledge System does not provide patient-specific medical advice.</p><a class="dir-link" href="https://eolpc.org/international-psychedelic-connector-directory/" target="_blank">Find a Practitioner → EOLPC Connector Directory</a>`;
@@ -509,6 +772,11 @@ async function ask(){
       else tag.innerHTML='<span class="type-tag tag-b">EOLPC Educational + Web Content</span>';
       document.getElementById('rdeclined').style.display='none';
       document.getElementById('rtext').innerHTML=`<p>${p.synthesis}</p>`;
+      // Populate synthesis-text span for voice output
+      document.getElementById('synthesis-text').textContent = p.synthesis || '';
+      // Show listen button if there's content
+      const lb = document.getElementById('listen-btn');
+      if (lb && p.synthesis) lb.classList.add('vis');
 
       // Build sources HTML
       let srcHtml='';
@@ -570,6 +838,206 @@ async function ask(){
 document.getElementById('qi').addEventListener('keydown',e=>{
   if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))ask();
 });
+
+// ── VOICE INPUT (Web Speech API) ─────────────────────────────────────────
+let recognition = null;
+let isListening = false;
+const micBtn = document.getElementById('mic-btn');
+const micHint = document.getElementById('mic-hint');
+
+function initRecognition() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    micHint.textContent = 'Voice input not available in this browser (try Chrome)';
+    micBtn.style.opacity = '0.4';
+    micBtn.style.cursor = 'not-allowed';
+    return null;
+  }
+  const r = new SR();
+  r.continuous = false;
+  r.interimResults = true;
+  r.lang = 'en-US';
+  r.maxAlternatives = 1;
+  r.onstart = () => {
+    micBtn.classList.add('listening');
+    micHint.textContent = 'Listening… speak your question';
+  };
+  r.onresult = (e) => {
+    const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
+    document.getElementById('qi').value = transcript;
+    if (e.results[e.results.length - 1].isFinal) {
+      micBtn.classList.remove('listening');
+      micHint.textContent = 'Click mic to speak your question';
+      isListening = false;
+      // Auto-submit after brief pause
+      setTimeout(() => ask(), 800);
+    }
+  };
+  r.onerror = (e) => {
+    micBtn.classList.remove('listening');
+    micHint.textContent = e.error === 'not-allowed' ? 'Microphone permission denied' : 'Voice input error — try typing';
+    isListening = false;
+  };
+  r.onend = () => {
+    micBtn.classList.remove('listening');
+    if (isListening) micHint.textContent = 'Click mic to speak your question';
+    isListening = false;
+  };
+  return r;
+}
+
+function toggleMic() {
+  if (!recognition) recognition = initRecognition();
+  if (!recognition) return;
+  if (isListening) {
+    recognition.stop();
+    isListening = false;
+    micBtn.classList.remove('listening');
+    micHint.textContent = 'Click mic to speak your question';
+  } else {
+    try {
+      recognition.start();
+      isListening = true;
+    } catch(e) {
+      // Already started — stop and restart
+      recognition.stop();
+      setTimeout(() => { recognition.start(); isListening = true; }, 200);
+    }
+  }
+}
+
+// ── VOICE OUTPUT (Web Speech Synthesis) ──────────────────────────────────
+let currentUtterance = null;
+let isSpeaking = false;
+
+function speakResponse() {
+  const listenBtn = document.getElementById('listen-btn');
+  if (isSpeaking) {
+    window.speechSynthesis.cancel();
+    isSpeaking = false;
+    listenBtn.classList.remove('playing');
+    listenBtn.innerHTML = '🔊 Listen';
+    return;
+  }
+  // Get response text — synthesis text from the response body
+  const synth = document.getElementById('synthesis-text');
+  if (!synth || !synth.textContent.trim()) return;
+  
+  const text = synth.textContent
+    .replace(/\[\d+\]/g, '') // remove citation numbers
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 3000); // cap at 3000 chars
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.92;
+  utterance.pitch = 1.05;
+  utterance.lang = 'en-US';
+  
+  // Prefer a female voice
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.lang === 'en-US' && /samantha|victoria|karen|moira|tessa|fiona|alex/i.test(v.name))
+                 || voices.find(v => v.lang === 'en-US')
+                 || voices[0];
+  if (preferred) utterance.voice = preferred;
+  
+  utterance.onstart = () => {
+    isSpeaking = true;
+    listenBtn.classList.add('playing');
+    listenBtn.innerHTML = '⏹ Stop';
+  };
+  utterance.onend = utterance.onerror = () => {
+    isSpeaking = false;
+    listenBtn.classList.remove('playing');
+    listenBtn.innerHTML = '🔊 Listen';
+  };
+  
+  currentUtterance = utterance;
+  window.speechSynthesis.cancel(); // clear queue
+  window.speechSynthesis.speak(utterance);
+}
+
+
+function setAskPath(n) {
+  document.getElementById('ask-p1').classList.toggle('active', n===1);
+  document.getElementById('ask-p2').classList.toggle('active', n===2);
+  document.getElementById('ask-detail-p1').style.display = n===1 ? 'block' : 'none';
+  document.getElementById('ask-detail-p2').style.display = n===2 ? 'block' : 'none';
+}
+
+
+const CHIP_EVIDENCE = [
+  { // Chip 0: Hopkins/NYU psilocybin
+    title: "Published Clinical Research · Psilocybin EOL Trials",
+    rows: [
+      { badge: "PubMed", cls: "ev-badge-pm",
+        text: "<strong>Griffiths et al. 2016 (Hopkins, N=51)</strong> — 78% antianxiety response and 65% antidepressant response at 6-month follow-up. Effects sustained at 4.5 years.",
+        meta: "J. Psychopharmacology · PMID 27909165 · Heffter" },
+      { badge: "PubMed", cls: "ev-badge-pm",
+        text: "<strong>Ross et al. 2016 (NYU, N=29)</strong> — 60–80% met clinically significant criteria at 6.5-month follow-up. Rapid onset within hours of session.",
+        meta: "J. Psychopharmacology · PMID 27909164 ·" },
+    ]
+  },
+  { // Chip 1: Psychedelic-assisted therapy for EOL distress (ketamine + MDMA analogs)
+    title: "Published Clinical Research · Psychedelic-Assisted Therapy for EOL Distress",
+    rows: [
+      { badge: "PubMed", cls: "ev-badge-pm",
+        text: "<strong>Horowitz et al. 2026 (J Palliat Med) — Ketamine</strong> — First published real-world implementation of ketamine-assisted psychotherapy (KAP) in a palliative care setting at URMC. 30 patients across 28 months — documenting patient selection, dosing protocols, session structure, integration, and adverse event management in clinical (not trial) practice.",
+        meta: "Journal of Palliative Medicine · PMID 41783943 · Observational study" },
+      { badge: "PubMed", cls: "ev-badge-pm",
+        text: "<strong>Wolfson et al. 2020 (Sci Rep) — MDMA</strong> — FDA-approved Phase 2 trial of MDMA-assisted psychotherapy for anxiety in life-threatening illness (N=18). Within-group reductions in anxiety and depression were statistically significant across all measures, sustained at 6- and 12-month follow-up. Principal Investigator: Philip Wolfson MD.",
+        meta: "Scientific Reports · PMID 33235285 · Phil Wolfson MD (proposed EOLPC collaborator, pending his agreement)" },
+    ]
+  },
+  { // Chip 2: EOLPC practitioners
+    title: "EOLPC Proprietary Data · Psychedelic Death Worker Study",
+    rows: [
+      { badge: "EOLPC", cls: "ev-badge-eolpc",
+        text: "<strong>N=100 practitioner survey</strong> — Practitioners with dual experience in psychedelic facilitation AND end-of-life care. Only dataset of its kind globally. 63 provided in-depth qualitative responses (subset of 100).",
+        meta: "Arrington · University of Chicago · Publication anticipated 2027" },
+      { badge: "EOLPC", cls: "ev-badge-eolpc",
+        text: "<strong>Key practitioner findings</strong> — Set and setting in home-based sessions; pre-session preparation for unresolved grief; spiritual care integration beyond symptom management; facilitators skilled in the specific emotional terrain of terminal illness.",
+        meta: "EOLPC Psychedelic Death Worker Study · Layer 1 + Layer 2 of the Knowledge System" },
+    ]
+  },
+  { // Chip 3: Oregon legal access
+    title: "Legal & Regulatory · Psilocybin Access in Oregon",
+    rows: [
+      { badge: "Web", cls: "ev-badge-ex",
+        text: "<strong>Oregon Measure 109 (2020) / ORS 475A</strong> — OHA-licensed psilocybin service centers active since 2024. Legal for adults 21+ — no diagnosis, no prescription required. Facilitated sessions at licensed facilities with trained facilitators.",
+        meta: "Oregon Health Authority · Exa-sourced" },
+      { badge: "Web", cls: "ev-badge-ex",
+        text: "<strong>Access pathway</strong> — Find an OHA-licensed service center → complete preparation sessions with a licensed facilitator → attend administration session → integration session. Cost ranges from $800–$3,500 per session.",
+        meta: "OHA Psilocybin Services · psilocybinservices.oregon.gov" },
+    ]
+  },
+];
+
+function showEvidence(idx) {
+  const data = CHIP_EVIDENCE[idx];
+  if (!data) return;
+  document.getElementById('ev-title').textContent = data.title;
+  document.getElementById('ev-body').innerHTML = data.rows.map(r => `
+    <div class="ev-row">
+      <span class="ev-badge ${r.cls}">${r.badge}</span>
+      <div>
+        <div class="ev-txt">${r.text}</div>
+        <div class="ev-meta">${r.meta}</div>
+      </div>
+    </div>`).join('');
+  document.getElementById('ev-panel').classList.add('vis');
+  document.getElementById('ev-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function closeEvidence() {
+  document.getElementById('ev-panel').classList.remove('vis');
+}
+
+
+function toggleKb(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
 </script>
 </body>
 </html>
