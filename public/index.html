@@ -235,6 +235,10 @@ footer a{color:rgba(246,243,236,.5);text-decoration:none}
 .kb-chip-sm{font-family:'DM Mono',monospace;font-size:10px;color:var(--dg);background:var(--cite-bg);border:1px solid #B8D4B8;border-radius:3px;padding:2px 8px}
 
 </style>
+<script src="/_vercel/insights/script.js" defer></script>
+<script src="/_vercel/speed-insights/script.js" defer></script>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "EOLPC Knowledge System | End of Life Psychedelic Care", "description": "EOLPC Knowledge System | End of Life Psychedelic Care \u2014 NSAG-aligned framework", "url": "https://eolpc-demo.vercel.app"}</script>
 </head>
 <body><a href="#main-content" class="skip-link">Skip to main content</a><main id="main-content" role="main">
 
@@ -1039,5 +1043,50 @@ function toggleKb(id) {
 }
 
 </script>
+<script>
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+    if(p.get(k))sessionStorage.setItem(k,p.get(k));
+  });
+  var t=false;
+  window.addEventListener('scroll',function(){
+    if(!t&&window.scrollY>300){
+      t=true;
+      fetch('/api/track',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({event:'scroll_depth',path:location.pathname,
+          utm_source:sessionStorage.getItem('utm_source')||'',
+          utm_medium:sessionStorage.getItem('utm_medium')||''})});
+    }
+  },{passive:true});
+})();
+</script>
+<!-- Contact the Architect -->
+<button onclick="document.getElementById('ca-modal-eolpc-demo').style.display='flex'" style="position:fixed;bottom:24px;right:24px;z-index:999;background:#1a1a1a;color:#fff;border:none;padding:10px 18px;border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.35)">Contact the Architect</button>
+<div id="ca-modal-eolpc-demo" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#fff;border-radius:12px;padding:32px;max-width:480px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.2)">
+    <h3 style="margin:0 0 16px;font-size:20px;color:#111">Contact the Architect</h3>
+    <form id="ca-form-eolpc-demo">
+      <input name="name" placeholder="Name" required style="width:100%;margin-bottom:10px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px">
+      <input name="email" type="email" placeholder="Email" required style="width:100%;margin-bottom:10px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px">
+      <textarea name="message" placeholder="Message" rows="4" style="width:100%;margin-bottom:16px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px;resize:vertical"></textarea>
+      <button type="submit" style="background:#1a1a1a;color:#fff;border:none;padding:10px 24px;border-radius:6px;cursor:pointer;font-size:14px">Send</button>
+      <button type="button" onclick="document.getElementById('ca-modal-eolpc-demo').style.display='none'" style="margin-left:8px;background:none;border:1px solid #ccc;color:#333;padding:10px 24px;border-radius:6px;cursor:pointer;font-size:14px">Cancel</button>
+    </form>
+    <script>
+    document.getElementById('ca-form-eolpc-demo').addEventListener('submit',function(e){
+      e.preventDefault();
+      var f=e.target;
+      fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:f.name.value,email:f.email.value,message:f.message.value,source:'eolpc-demo'})
+      }).then(function(){
+        f.reset();
+        document.getElementById('ca-modal-eolpc-demo').style.display='none';
+      }).catch(function(){});
+    });
+    </script>
+  </div>
+</div>
+<div style="text-align:center;padding:12px 0;font-size:12px;color:#666;border-top:1px solid #eee;margin-top:24px">Built by <a href="https://rn-portfolio-khaki.vercel.app" style="color:#333" target="_blank" rel="noopener">RN Builds</a></div>
 </body>
 </html>
