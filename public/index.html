@@ -1079,7 +1079,7 @@ function toggleKb(id) {
     document.getElementById('ca-form-eolpc-demo').addEventListener('submit',function(e){
       e.preventDefault();
       var f=e.target;
-      fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      fetch('https://rn-api.vercel.app/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({name:f.name.value,email:f.email.value,message:f.message.value,source:'eolpc-demo'})
       }).then(function(){
         f.reset();
